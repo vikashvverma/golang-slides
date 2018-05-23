@@ -1,0 +1,71 @@
+Introduction to Golang
+23 May 2018
+Tags: Golang, Basics
+
+Vikash
+Gopher
+@_vikashvverma
+
+* Agenda
+- Variable & Inferred Typing
+- Constants
+- Printing Constants and Variables
+- Packages and imports
+- Code location
+- Exported names
+- Functions, signature, return values, named results
+- Pointers
+- Mutability
+
+* Variable & Inferred Typing
+
+The var statement declares a list of variables with the type declared last.
+
+    var (
+        name     string
+        age      int
+        location string
+    )
+
+or even
+
+    var (
+        name, location  string
+        age             int
+    )
+
+or one by one
+
+    var name     string
+    var age      int
+    var location string
+
+* Variable & Inferred Typing
+
+A var declaration can include initializers, one per variable.
+
+    var (
+        name     string = "Prince Oberyn"
+        age      int    =  32
+        location string = "Dorne"
+    )
+
+If an initializer is present, the type can be omitted, the variable will take the type of the initializer (inferred typing)
+
+    var (
+        name     = "Prince Oberyn"
+        age      =  32
+        location = "Dorne"
+    )
+
+All initialized in same line
+
+    var (
+        name, location, age = "Prince Oberyn", "Dorne", 32
+    )
+
+* Variable & Inferred Typing
+
+Inside a function, the := short assignment statement can be used in place of a var declaration with implicit type.
+
+.play -edit codes/variable.go
