@@ -5,7 +5,7 @@ import "fmt"
 const (
 	Pi    = 3.14
 	Truth = false
-	Big   = 1 << 62
+	Big   = 1 << 30
 )
 
 func main() {

@@ -97,7 +97,7 @@ A variable can contain any type, including functions:
 
 * Constants
 
-.play codes/constant.go
+.play -edit codes/constant.go
 
 * Printing Constants and Variables
 - Using builtin *print* or *println* functions
