@@ -45,23 +45,23 @@ or one by one
 A var declaration can include initializers, one per variable.
 
     var (
-        name     string = "Prince Oberyn"
-        age      int    =  32
-        location string = "Dorne"
+        name     string = "Black Panther"
+        age      int    =  40
+        location string = "Wakanda"
     )
 
 If an initializer is present, the type can be omitted, the variable will take the type of the initializer (inferred typing)
 
     var (
-        name     = "Prince Oberyn"
-        age      =  32
-        location = "Dorne"
+        name     = "Black Panther"
+        age      =  40
+        location = "Wakanda"
     )
 
 All initialized in same line
 
     var (
-        name, location, age = "Prince Oberyn", "Dorne", 32
+        name, location, age = "Black Panther", "Wakanda", 40
     )
 
 * Variable & Inferred Typing
@@ -69,3 +69,59 @@ All initialized in same line
 Inside a function, the := short assignment statement can be used in place of a var declaration with implicit type.
 
 .play -edit codes/variable.go
+
+A variable can contain any type, including functions:
+
+    func main() {
+        action := func() {
+            //doing something
+        }
+        action()
+    }
+
+* Constants
+
+- Like variables but with const keyword
+- Cannot be declared using := syntax
+
+    const Pi = 3.14
+    const (
+            StatusOK                   = 200
+            StatusCreated              = 201
+            StatusAccepted             = 202
+            StatusNonAuthoritativeInfo = 203
+            StatusNoContent            = 204
+            StatusResetContent         = 205
+            StatusPartialContent       = 206
+    )
+
+* Constants
+
+.play codes/constant.go
+
+* Printing Constants and Variables
+- Using builtin *print* or *println* functions
+- Using functions from *fmt* package
+
+.play codes/print.go
+
+* Packages and imports
+- Every Go program is made up of packages. Programs start running in package main.
+- Your executable must have a *main* function in order to start
+- If you are developing library, you don't need a main function
+    package main
+
+    func main() {
+        print("Hello, World!\n")
+    }
+Import statement examples:
+
+    import "fmt"
+    import "math/rand"
+
+Or grouped:
+
+    import (
+        "fmt"
+        "math/rand"
+    )
