@@ -125,3 +125,63 @@ Or grouped:
         "fmt"
         "math/rand"
     )
+
+* Code location
+- Make sure GOPATH environment variable is set
+    $ ls $GOPATH
+    bin	pkg	src
+- *bin*: Compiled versio of binaries
+- *pkg*:  Contains the compiled versions of the available libraries so the compiler can link against them without recompiling them.
+- *src*: Contains all the Go source code organized by import path
+    $ ls $GOPATH/src
+    bitbucket.org github.com golang.org jnk-centos-git
+
+    $ls $GOPATH/src/jnk-centos-git/imaging
+    imaging-data-model imaging-dev-box imaging-fe imaging-service
+
+- When starting a new program or library, it is recommended to do so inside the src folder, using a fully qualified path:
+    github.com/<your username>/<project name>
+
+* Exported names
+- After importing a package, you can refer to the names it exports
+- In Go, a name is exported if it begins with a capital letter
+- *Foo* is an exported name, as is *FOO*. The name *foo* is not exported.
+.play -edit codes/export-invalid.go
+
+* Exported names
+.play -edit codes/export-valid.go
+
+* Functions, signature, return values, named results
+- A function can take zero or more arguments
+- The type comes after the variable name
+- Functions can be defined to return any number of values that are always typed
+.play -edit codes/function.go
+
+* Functions, signature, return values, named results
+- When type of variables are same, declare type once
+.play -edit codes/function-type-once.go
+
+* Functions, signature, return values, named results
+- Function can return multiple values
+.play -edit codes/function-multiple-return.go
+
+* Functions, signature, return values, named results
+- Return parameter can be named
+- If the result parameters are named, a return statement without arguments returns the current values of the results
+.play -edit codes/function-named-parameter.go
+
+* Variadic Function
+- There is a special form available for the last parameter in a Go function:
+.play -edit codes/function-variadic.go
+- [...] indicates that function takes zero or more of those parameters
+- Useful when we need optional parameters
+
+* Closures
+- It is possible to create functions inside of functions:
+-   Similar to JavaScript
+.play -edit codes/function-closure.go
+
+* Recursion: Function is able to call itself
+
+.play -edit codes/recursion.go
+.image ./recursion.gif
