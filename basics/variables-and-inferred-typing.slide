@@ -1,5 +1,5 @@
 Introduction to Golang
-23 May 2018
+30 May 2018
 Tags: Golang, Basics
 
 Vikash
@@ -7,6 +7,8 @@ Gopher
 @_vikashvverma
 
 * Agenda
+- Introduction
+- Why Go
 - Variable & Inferred Typing
 - Constants
 - Printing Constants and Variables
@@ -15,6 +17,28 @@ Gopher
 - Exported names
 - Functions, signature, return values, named results
 - Pointers
+
+* Introduction
+Developed by
+- Robert Griesemer
+- Rob Pike
+- Ken Thompson(also developed Unix)
+
+* Introduction
+- 5th most loved language
+- 3rd most wanted language
+
+* Why Go
+.image ./why-go2.png
+
+* Why Go
+- Simple
+- Compiles straight to native code
+- Static type System
+- Performance
+- No need of a Framework
+- Great IDE support and debugging
+- Can be compiled to any OS/architecture
 
 * Variable & Inferred Typing
 
