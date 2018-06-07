@@ -13,7 +13,7 @@ $ present
 
 ## Program
 
-#### basics
+#### [basics](https://go-talks.appspot.com/github.com/vikashvverma/golang-slides/basics/variables-and-inferred-typing.slide)
 - Introduction
 - Why Go
 - Variable & Inferred Typing
@@ -27,7 +27,7 @@ $ present
 - [x] Slides
 - [x] Code
 
-#### types
+#### [types](https://go-talks.appspot.com/github.com/vikashvverma/golang-slides/types/types.slide)
 - Basic types
 - Type Assertion
 - Structs
