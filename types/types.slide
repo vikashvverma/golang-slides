@@ -1,10 +1,17 @@
 Introduction to Golang
-23 May 2018
-Tags: Golang, Basics
+07 June 2018
+Tags: Golang, Types
 
 Vikash
 Gopher
 @_vikashvverma
+
+* Agenda
+- Basic types
+- Type Assertion
+- Structs
+- Initializing
+- Composition vs inheritance
 
 * Basic Types
 
@@ -62,3 +69,97 @@ Or, simply
 .play -edit codes/assertion.go
 
 * Structs
+- Collection of fields/properties
+- New type can be defined as struct or interfaces etc.
+- Think of struct to be a light class which supports composition but not inheritance
+- No need to have getter and setters, fields can be accessed directly(like C)
+- Only exported fields(field starting with a capital letter) would be accessible outside the package
+
+* Structs
+.play -edit codes/struct.go
+
+* Structs
+Declaration of struct literals:
+.play -edit codes/struct-declaration.go
+
+* Structs
+Accessing fields using the dot notation:
+- You don't necessarily need to derefernce while accessing a field
+.play -edit codes/struct-access-field.go
+
+* Initializing
+- Go supports *new(int)* expression to allocate a zeroed value of the requested type and to return a pointer to it.
+    x := new(int)
+- Using *new* or literal as follows are equivalent:
+.play -edit codes/init.go
+
+* Composition vs inheritance
+- Coming from an OOP background a lot of us are used to inheritance, something that isn’t supported by Go. Instead you have to think in terms of composition and interfaces.
+- Composition (or embedding) is a well understood concept for most OOP programmers and Go supports it, here is an example of the problem it’s solving:
+
+* Composition vs inheritance
+.play -edit codes/composition.go
+
+* Composition vs inheritance
+- The previous example demonstrates a classic OOP challenge, our Player struct has the same fields as the User struct but it also has a GameId field.
+- Having to duplicate the field names isn’t a big deal, but it can be simplified by composing our struct.
+
+    type User struct {
+        Id             int
+        Name, Location string
+    }
+
+    type Player struct {
+        User
+        GameId int
+    }
+
+* Composition vs inheritance
+We can initialize a new variable of type Player two different ways.
+
+- Using the dot notation to set the fields:
+
+    func main() {
+        p := Player{}
+        p.Id = 42
+        p.Name = "Matt"
+        p.Location = "LA"
+        p.GameId = 90404
+        fmt.Printf("%+v", p)
+    }
+
+* Composition vs inheritance
+- The other option is to use a struct literal:
+
+    func main() {
+        p := Player{
+            User{Id: 42, Name: "Matt", Location: "LA"},
+            90404,
+        }
+        fmt.Printf(
+            "Id: %d, Name: %s, Location: %s, Game id: %d\n",
+            p.Id, p.Name, p.Location, p.GameId)
+        // Directly set a field defined on the Player struct
+        p.Id = 11
+        fmt.Printf("%+v", p)
+    }
+
+* Composition vs inheritance
+
+- All properties and methods of *User* are available to *Player*
+.play -edit codes/composition-prop.go
+
+* Composition vs inheritance
+
+- It's interesting when you think it in terms of interfaces
+- By composing one of your structure with one implementing a given interface, your structure automatically implements the interface.
+
+* Composition vs inheritance
+Here is another example, this time we will look at implementing a Job struct that can also behave as a logger.
+
+- Here is the explicit way:
+.play -edit codes/logger.go
+
+* Composition vs inheritance
+- We can use implicit composition
+.play -edit codes/logger-refactored.go
