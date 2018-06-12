@@ -1,0 +1,154 @@
+Introduction to Golang
+13 June 2018
+Tags: Golang, Types
+
+Vikash
+Gopher
+@_vikashvverma
+
+* Agenda
+- Arrays
+- Slices
+- Maps
+- If statement
+- For Loop
+- Switch case
+
+* Arrays
+The type *[n]T* is an array of n values of type *T*.
+
+The expression:
+
+    var a [10]int
+
+declares a variable *a* as an array of ten integers.
+
+An array’s length is part of its type, so arrays cannot be resized.
+We can also set the array entries while declaring the array:
+.play -edit codes/array-declaration.go
+
+ellipsis(...) can be used for implicit length
+
+* Arrays
+
+Using *println* or *printf* from *fmt* package with *%s* or *%q* verb
+
+.play -edit codes/array-print.go
+
+* Arrays
+We can also create multi-dimensional arrays:
+.play -edit codes/array-multi.go
+
+* Arrays
+Trying to access or set a value at an index that doesn’t exist will prevent your program from compiling, for instance, try to compile the following code:
+
+.play -edit codes/array-index.go
+
+Compiler will report following error:
+
+    Invalid array index 3 (out of bounds for 2-element array)
+
+* Slices
+- Slices wrap arrays to give a more general, powerful, and convenient interface to sequences of data.
+- Most often in Golang, people use slices instead of arrays
+- Slices internally holds reference to underlying array
+- If one slice is assigned to other, both refers to same array
+- A slice points to an array
+- Slices can be resized since they are just a wrapper on top of another data-structure
+- *[]T* is a slice with elements of type *T*
+
+* Slices
+.image slice.png
+.play -edit codes/slice.go
+
+* Slices
+Operations:
+- Slicing a slice
+- Making slices
+- Appending to a slice
+- Length
+
+* Slices
+.play -edit codes/slice-operation.go
+
+* Maps
+
+- Maps are similar to what we call *dictionaries* or *hash* in some languages
+- A map maps keys to values
+- Assignment is similar to JavaScript
+- Maps can be created using *make*
+
+* Maps
+.play -edit codes/map.go
+
+* Maps
+Operations:
+- Insert or update an element in map m:
+
+    m[key] = elem
+- Retrieve an element:
+
+    elem = m[key]
+Delete an element:
+
+    delete(m, key)
+Test that a key is present with a two-value assignment:
+
+    elem, ok = m[key]
+If key is in m, ok is true. If not, ok is false
+
+* If statement
+- Similar to *C* and *Java* but *()* are gone and *{}* are required
+    if answer != 42 {
+        return "Wrong answer"
+    }
+**
+
+    if err := foo(); err != nil {
+        panic(err)
+    }
+
+**
+
+    if answer != 42 {
+            return "Wrong answer"
+    } else {
+        return "Right answer"
+    }
+
+* For Loops
+- Go has only one looping construct, the *for* loop
+- The basic for loop looks as it does in C or Java, except that the ( ) are gone (they are not even optional) and the { } are required
+- As in C or Java, you can leave the pre and post statements empty.
+
+    sum := 0
+    for i := 0; i < 10; i++ {
+        sum += i
+    }
+**
+
+    sum := 1
+    for ; sum < 1000; {
+        sum += sum
+    }
+**
+
+    sum := 1
+    for sum < 1000 {
+        sum += sum
+    }
+
+* Switch case
+To avoid complex series of *if else* statements, most programming language have switch case statements.
+
+Go Switch case:
+
+- Compares values of same type
+- Can set optional default statement
+- An expression can be used in *case* statement
+- Multiple values in case statement
+- Do not need explicit *break* statement
+- can execute rest of cases using *fallthrough* statement
+
+* Switch case
+.play -edit codes/switch.go
