@@ -1,0 +1,57 @@
+Introduction to Golang
+20 June 2018
+Tags: Golang, method, interface, aliasing
+
+Vikash
+Gopher
+@_vikashvverma
+
+* Agenda
+- Methods
+- Type aliasing
+- Interfaces
+
+* Methods
+
+- Go does not have classes. However, you can define methods on struct types.
+- The method receiver appears in its own argument list between the *func* keyword and the method name.
+- Here is an example with a *User* struct containing two fields: *FirstName* and *LastName* of string type.
+- Note how methods are defined outside of the struct.
+- The method on the *User* type could be defined anywhere in the package.
+
+* Methods
+.play -edit codes/method.go
+
+* Methods
+- Methods can be associated with a named type (*User* for instance) or a pointer to a named type (* *User*).
+- Go passes everything by value, when a method receiver is not defined on pointer type, entire value needs to be copied.
+- When a method receiver is defined on pointer type, only pointer value needs to be passed.
+- A general convention is to always use pointer type on method receiver unless other type is required.
+
+
+* Methods
+Code Organization: Methods can be defined on any file on the package, but recommendation is to organize the code as shown below:
+.play -edit codes/method-organization.go
+
+* Type aliasing
+
+Suppose we want to define a method on type, we need to define an alias for that.
+.play -edit codes/alias.go
+
+* Interfaces
+- An interface type is defined by a set of methods.
+- A value of interface type can hold any value that implements those methods.
+- Let's have a look at refactored version of our earlier example:
+
+* Interfaces
+.play -edit codes/interface.go
+
+* Interfaces
+We can define a new type that would implement same interface and our *Greet* function would still work
+
+* Interfaces
+.play -edit codes/interface-implementation.go
+
+* Interfaces
+- Interfaces are satisfied implicitly
+- A type implements an interface by implementing the methods
